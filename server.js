@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const config = require("./app/config");
+const setupContactRoutes = require("./app/routes/contact.routes");
 
 const app = express();
 
@@ -14,7 +15,9 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to contact book application." });
 });
 
+setupContactRoutes(app);
+
 const PORT = config.app.port;
 app.listen(PORT, () => {
-    console.log(`Sever is running on port ${PORT}.`);
+    console.log(`Server is running on port ${PORT}.`);
 });
